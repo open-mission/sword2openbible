@@ -1,0 +1,55 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sword2openbible"
+version = "0.1.0"
+description = "CLI para converter módulos SWORD da CrossWire em bancos de dados SQLite compatíveis com OpenBible"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+    {name = "Open Mission Community"}
+]
+keywords = ["sword", "bible", "sqlite", "obsidian", "openbible"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Religion",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Religion",
+    "Topic :: Utilities",
+]
+
+dependencies = [
+    "pysword>=0.2.8",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+]
+
+[project.scripts]
+sword2openbible = "sword2openbible.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/open-mission/sword2openbible"
+Repository = "https://github.com/open-mission/sword2openbible"
+"Bug Tracker" = "https://github.com/open-mission/sword2openbible/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --cov=sword2openbible --cov-report=term-missing"
